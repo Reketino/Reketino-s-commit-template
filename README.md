@@ -1,0 +1,1 @@
+# Reketino-s-commit-template
