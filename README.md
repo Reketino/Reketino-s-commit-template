@@ -20,25 +20,25 @@ Keeping commits structured makes your project easier to read, review, and mainta
 
 ## ✍️ Example Commits
 
-feat: add user authentication system
+- feat: add user authentication system
 
-fix: resolve crash when submitting empty form
+- fix: resolve crash when submitting empty form
 
-refactor: extract API logic into separate service
+- refactor: extract API logic into separate service
 
-style: format code with prettier
+- style: format code with prettier
 
-chore: update dependencies to latest versions
+- chore: update dependencies to latest versions
 
-docs: add installation instructions to README
+- docs: add installation instructions to README
 
-test: add unit tests for login service
+- test: add unit tests for login service
 
-perf: optimize image loading with lazy loading
+- perf: optimize image loading with lazy loading
 
-ci: add GitHub Actions workflow for testing
+- ci: add GitHub Actions workflow for testing
 
-build: configure Vite build output settings
+- build: configure Vite build output settings
 
 ## ⚙️ Setup
 
