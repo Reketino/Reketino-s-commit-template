@@ -46,7 +46,7 @@ Keeping commits structured makes your project easier to read, review, and mainta
 - git config commit.template commit-template/commit-template.txt
 
 ### Global
-- git config --global commit.template ~/commit-template.txt
+- git config --global commit.template commit-template/.commit-template.txt
 
 ## 💡 Why use this?
 - Cleaner commit history
