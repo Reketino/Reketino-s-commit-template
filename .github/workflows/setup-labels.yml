@@ -8,3 +8,4 @@ on:
 
 jobs: 
   setup-labels:
+    runs-on: ubuntu-latest
