@@ -5,3 +5,7 @@ on:
       branches:
         - main
     workflow_dispatch:
+
+jobs: 
+  setup-labels:
+    runs-on: ubuntu-latest
