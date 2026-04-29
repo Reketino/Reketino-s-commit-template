@@ -9,3 +9,6 @@ on:
 jobs: 
   setup-labels:
     runs-on: ubuntu-latest
+
+    steps:
+      - name: Create or update labels
