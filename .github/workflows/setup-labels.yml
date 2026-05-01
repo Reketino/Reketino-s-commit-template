@@ -17,4 +17,5 @@ jobs:
           script: |
             const labels = [
               { name: "build", color: "8b5cf6", description "build system or dependency changes" },
+              { name: "chore", color: "6b7280", description "tooling, deps, cleanup" },
             ]
