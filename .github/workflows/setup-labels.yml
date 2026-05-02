@@ -16,6 +16,14 @@ jobs:
         with:
           script: |
             const labels = [
-              { name: "build", color: "8b5cf6", description "build system or dependency changes" },
-              { name: "chore", color: "6b7280", description "tooling, deps, cleanup" },
-            ]
+              { name: "build", color: "8b5cf6", description: "build system or dependency changes" },
+              { name: "chore", color: "6b7280", description: "tooling, deps, cleanup" },
+              { name: "ci", color: "0ea5e9", description: "CI/CD changes" },
+              { name: "docs", color: "3b82f6", description: "documentation only" },
+              { name: "feat", color: "22c55e", description: "new feature" },
+              { name: "fix", color: "ef4444", description: "bug fix" },
+              { name: "perf", color: "f97316", description: "performance improvements" },
+              { name: "refactor", color: "a855f7", description: "code change that improves structure" },
+              { name: "style", color: "eab308", description: "formatting, no logic change" },
+              { name: "test", color: "14b86", description: "adding or updating tests" },
+            ];
