@@ -45,6 +45,6 @@ jobs:
                   color: label.color,
                   description: label.description
                 });
-                console.log(`Created label: ${label.name}`) 
+                console.log(`Created label: ${label.name}`); 
               }
             }
