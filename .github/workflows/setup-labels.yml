@@ -1,10 +1,7 @@
 name: Setup Labels
 
 on:
-    push:
-      branches:
-        - main
-    workflow_dispatch:
+  workflow_dispatch:
 
 jobs: 
   setup-labels:
@@ -25,5 +22,29 @@ jobs:
               { name: "perf", color: "f97316", description: "performance improvements" },
               { name: "refactor", color: "a855f7", description: "code change that improves structure" },
               { name: "style", color: "eab308", description: "formatting, no logic change" },
-              { name: "test", color: "14b86", description: "adding or updating tests" },
+              { name: "test", color: "14b8a6", description: "adding or updating tests" },
             ];
+
+            for (const label of labels) {
+              try {
+                // Try update first
+                await github.rest.issues.updateLabel({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  name: label.name,
+                  color: label.color,
+                  description: label.description
+                });
+                console.log(`Updated label: ${label.name}`);
+              } catch (error) {
+                // If not exists -> create it
+                await github.rest.issues.createLabel({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  name: label.name,
+                  color: label.color,
+                  description: label.description
+                });
+                console.log(`Created label: ${label.name}`) 
+              }
+            }
