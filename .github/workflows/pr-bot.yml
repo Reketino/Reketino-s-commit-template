@@ -3,3 +3,7 @@ name: PR BOT
 on:
     pull_request:
       types: [opened, edited, synchronize]
+
+permission:
+  issues: write
+  pull-requests: write
