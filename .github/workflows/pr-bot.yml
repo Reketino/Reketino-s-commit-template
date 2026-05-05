@@ -4,6 +4,10 @@ on:
     pull_request:
       types: [opened, edited, synchronize]
 
-permission:
+permissions:
   issues: write
   pull-requests: write
+
+jobs:
+  validate-and-label:
+    runs-on: ubunutu-latest
