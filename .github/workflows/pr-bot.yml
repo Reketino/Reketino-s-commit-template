@@ -11,3 +11,13 @@ permissions:
 jobs:
   validate-and-label:
     runs-on: ubunutu-latest
+
+    steps:
+      - name: Validate PR title + apply label
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const title = context.payload.pull_request.title;
+
+            
+
