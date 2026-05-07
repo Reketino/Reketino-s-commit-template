@@ -28,6 +28,7 @@ jobs:
             "fix",
             "perf",
             "refactor",
+            "style",
             ]
 
             
