@@ -27,6 +27,7 @@ jobs:
             "feat",
             "fix",
             "perf",
+            "refactor",
             ]
 
             
