@@ -25,6 +25,7 @@ jobs:
             "ci",
             "docs",
             "feat",
+            "fix",
             ]
 
             
