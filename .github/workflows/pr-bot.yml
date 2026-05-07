@@ -19,5 +19,10 @@ jobs:
           script: |
             const title = context.payload.pull_request.title;
 
+            const types = [
+            "build",
+            
+            ]
+
             
 
