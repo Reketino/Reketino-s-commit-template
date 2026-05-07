@@ -23,6 +23,7 @@ jobs:
             "build",
             "chore",
             "ci",
+            "docs",
             ]
 
             
