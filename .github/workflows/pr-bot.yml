@@ -29,6 +29,7 @@ jobs:
             "perf",
             "refactor",
             "style",
+            "test",
             ]
 
             
