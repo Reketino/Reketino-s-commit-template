@@ -34,5 +34,15 @@ jobs:
 
             const match = title.match(/^(\w+)(\(-).+\))?:/);
 
+            if (!match || !types.includes(match[1])) {
+            await github.rest.issues.createComment({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            issue_number: context.issue.number,
+            body: ` Invalid PR title format hombre.
+            
+            })
+            }
+
             
 
