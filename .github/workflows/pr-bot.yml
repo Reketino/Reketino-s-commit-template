@@ -10,7 +10,7 @@ permissions:
 
 jobs:
   validate-and-label:
-    runs-on: ubunutu-latest
+    runs-on: ubuntu-latest
 
     steps:
       - name: Validate PR title + apply label
@@ -20,37 +20,51 @@ jobs:
             const title = context.payload.pull_request.title;
 
             const types = [
-            "build",
-            "chore",
-            "ci",
-            "docs",
-            "feat",
-            "fix",
-            "perf",
-            "refactor",
-            "style",
-            "test",
+              "build",
+              "chore",
+              "ci",
+              "docs",
+              "feat",
+              "fix",
+              "perf",
+              "refactor",
+              "style",
+              "test"
             ];
 
-            const match = title.match(/^(\w+)(\(-).+\))?:/);
+            // Supports:
+            // feat:
+            // feat(auth):
+            const match = title.match(/^(\w+)(\(.+\))?:/);
 
             if (!match || !types.includes(match[1])) {
               await github.rest.issues.createComment({
                 owner: context.repo.owner,
                 repo: context.repo.repo,
                 issue_number: context.issue.number,
-                body: ` Invalid PR title format hombre.            
-Use:
-feat: add login
-fix: resolve crash
-refactor(auth): simplify logic
-
-Allowed types: 
-${types.join(", ")}`
+                body: [ 
+                "Invalid PR title format hombre.",
+                ""            
+                Use:
+                feat: add login
+                fix: resolve crash
+                refactor(auth): simplify logic
+                "",
+                Allowed types: ${types.join(", ")}`
+                ].join("\n")
               });
 
               return;
             }
+             
+            const type = match[1];
+          
+            await github.rest.issues.addLabels({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              labels: [type]
+            });
 
 
             
