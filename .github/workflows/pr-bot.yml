@@ -44,13 +44,13 @@ jobs:
                 issue_number: context.issue.number,
                 body: [ 
                 "Invalid PR title format hombre.",
-                ""            
-                Use:
-                feat: add login
-                fix: resolve crash
-                refactor(auth): simplify logic
+                "",            
+                "Use:",
+                "feat: add login",
+                "fix: resolve crash",
+                "refactor(auth): simplify logic",
                 "",
-                Allowed types: ${types.join(", ")}`
+                `Allowed types: ${types.join(", ")}`
                 ].join("\n")
               });
 
@@ -65,6 +65,8 @@ jobs:
               issue_number: context.issue.number,
               labels: [type]
             });
+
+            console.log(`Label applied: ${type}`);
 
 
             
