@@ -54,6 +54,8 @@ jobs:
                 ].join("\n")
               });
 
+              core.setFailed("Invalid PR title format");
+
               return;
             }
              
