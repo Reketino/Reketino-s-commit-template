@@ -60,13 +60,19 @@ jobs:
             }
              
             const type = match[1];
-          
-            await github.rest.issues.addLabels({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              issue_number: context.issue.number,
-              labels: [type]
-            });
+
+            const existingLabels = context.payload.pull_request.labels.map(
+              label => label.name
+            );
+            
+            if (!existingLabels.includes(type)) {
+              await github.rest.issues.addLabels({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                labels: [type]
+              });
+            }
 
             console.log(`Label applied: ${type}`);
 
