@@ -1,55 +1,160 @@
-# 🔧 Bear's Commit Template
+# 🔧 Bear's Commit Workflow
 
-A simple and clean commit message template inspired by conventional commits.
+A lightweight GitHub workflow toolkit inspired by conventional commits.
 
-Keeping commits structured makes your project easier to read, review, and maintain.
+This project focuses on improving commit consistency, pull request structure, and repository organization through commit templates, GitHub labels, and automated PR validation.
 
-## 📦 Commit Types
+Keeping workflows structured makes projects easier to maintain, review, and scale over time.
 
-- Type:	Description
-- feat:	New feature
-- fix:	Bug fix
-- refactor:  Code change that improves structure
-- style: Formatting, no logic changes
-- chore: Tooling, dependencies, cleanup
-- docs:	 Documentation only
-- test:	 Adding or updating tests
-- perf:	 Performance improvements
-- ci:	 CI/CD changes
-- build: Build system changes
+---
 
-## ✍️ Example Commits
+# 🎯 Purpose of the Project
 
-- feat: add user authentication system
+The goal of this project is not just to standardize commit messages, but to build a cleaner and more automated development workflow around GitHub.
 
-- fix: resolve crash when submitting empty form
+The toolkit helps:
 
-- refactor: extract API logic into separate service
+* enforce consistent PR titles
+* automate label management
+* improve commit readability
+* reduce manual repository maintenance
+* create a cleaner developer workflow
 
-- style: format code with prettier
+---
 
-- chore: update dependencies to latest versions
+# 📦 Included Features
 
-- docs: add installation instructions to README
+## 🔹 Commit Template
 
-- test: add unit tests for login service
+A reusable commit template inspired by conventional commits.
 
-- perf: optimize image loading with lazy loading
+### Supported Types
 
-- ci: add GitHub Actions workflow for testing
+* feat → new feature
+* fix → bug fix
+* refactor → code structure improvements
+* style → formatting, no logic changes
+* chore → tooling, dependencies, cleanup
+* docs → documentation only
+* test → adding or updating tests
+* perf → performance improvements
+* ci → CI/CD changes
+* build → build system changes
 
-- build: configure Vite build output settings
+---
 
-## ⚙️ Setup
+## 🔹 Setup Labels Workflow
 
-### Local
-- git config commit.template commit-template/commit-template.txt
+Automatically creates and updates GitHub labels with predefined:
 
-### Global
-- git config --global commit.template ~/.gitmessage.txt
+* names
+* colors
+* descriptions
 
-## 💡 Why use this?
-- Cleaner commit history
-- Easier code reviews
-- Better collaboration
-- More professional workflow
+This ensures consistent issue and PR labeling across repositories.
+
+### Included Labels
+
+* feat
+* fix
+* refactor
+* style
+* chore
+* docs
+* test
+* perf
+* ci
+* build
+
+---
+
+## 🔹 PR Bot
+
+A GitHub Actions powered PR validation bot.
+
+The bot automatically:
+
+* validates pull request titles
+* supports scoped commits (`feat(auth):`)
+* applies matching labels automatically
+* prevents duplicate labels
+* fails invalid PR formats
+
+### Valid Examples
+
+```txt
+feat: add login system
+
+fix(api): resolve timeout issue
+
+refactor(auth): simplify JWT validation
+```
+
+### Invalid Example
+
+```txt
+updated login stuff
+```
+
+---
+
+# ✍️ Example Commits
+
+```txt
+feat: add user authentication system
+
+fix: resolve crash when submitting empty form
+
+refactor: extract API logic into separate service
+
+style: format code with prettier
+
+chore: update dependencies to latest versions
+
+docs: add installation instructions to README
+
+test: add unit tests for login service
+
+perf: optimize image loading with lazy loading
+
+ci: add GitHub Actions workflow for testing
+
+build: configure Vite build output settings
+```
+
+---
+
+# ⚙️ Setup
+
+## Local Repository
+
+```bash
+git config commit.template commit-template/commit-template.txt
+```
+
+## Global Setup
+
+```bash
+git config --global commit.template ~/.gitmessage.txt
+```
+
+Copy the template content into:
+
+```txt
+~/.gitmessage.txt
+```
+
+---
+
+# 💡 Why use this?
+
+* Cleaner commit history
+* Better pull request structure
+* Easier code reviews
+* Automated GitHub workflow management
+* More professional collaboration flow
+* Consistent repository organization
+
+---
+
+Built to make GitHub workflows cleaner, more automated, and easier to maintain.
