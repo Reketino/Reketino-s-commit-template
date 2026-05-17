@@ -1,4 +1,4 @@
-# 🔧 Bear's Commit Workflow
+# Bear's Commit Workflow
 
 A lightweight GitHub workflow toolkit inspired by conventional commits.
 
@@ -8,23 +8,9 @@ Keeping workflows structured makes projects easier to maintain, review, and scal
 
 ---
 
-# 🎯 Purpose of the Project
+# Features Included
 
-The goal of this project is not just to standardize commit messages, but to build a cleaner and more automated development workflow around GitHub.
-
-The toolkit helps:
-
-* enforce consistent PR titles
-* automate label management
-* improve commit readability
-* reduce manual repository maintenance
-* create a cleaner developer workflow
-
----
-
-# 📦 Included Features
-
-## 🔹 Commit Template
+##  Commit Template
 
 A reusable commit template inspired by conventional commits.
 
@@ -43,7 +29,7 @@ A reusable commit template inspired by conventional commits.
 
 ---
 
-## 🔹 Setup Labels Workflow
+##  Setup Labels Workflow
 
 Automatically creates and updates GitHub labels with predefined:
 
@@ -68,7 +54,7 @@ This ensures consistent issue and PR labeling across repositories.
 
 ---
 
-## 🔹 PR Bot
+##  PR Bot
 
 A GitHub Actions powered PR validation bot.
 
@@ -98,7 +84,7 @@ updated login stuff
 
 ---
 
-# ✍️ Example Commits
+#  Example Commits
 
 ```txt
 feat: add user authentication system
@@ -124,7 +110,7 @@ build: configure Vite build output settings
 
 ---
 
-# ⚙️ Setup
+#  Setup
 
 ## Local Repository
 
@@ -143,17 +129,6 @@ Copy the template content into:
 ```txt
 ~/.gitmessage.txt
 ```
-
----
-
-# 💡 Why use this?
-
-* Cleaner commit history
-* Better pull request structure
-* Easier code reviews
-* Automated GitHub workflow management
-* More professional collaboration flow
-* Consistent repository organization
 
 ---
 
