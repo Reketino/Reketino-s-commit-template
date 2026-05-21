@@ -8,5 +8,11 @@
         "name": "chore",
         "color": "6b7280",
         "description": "tooling, deps, cleanup"
+    },
+       {
+        "name": "ci",
+        "color": "0ea5e9",
+        "description": "CI/CD changes"
     }
+
 ]
