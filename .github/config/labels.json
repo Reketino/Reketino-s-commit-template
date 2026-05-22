@@ -13,6 +13,11 @@
         "name": "ci",
         "color": "0ea5e9",
         "description": "CI/CD changes"
+    },
+       {
+        "name": "docs",
+        "color": "3b82f6",
+        "description": "documentation only"
     }
 
 ]
