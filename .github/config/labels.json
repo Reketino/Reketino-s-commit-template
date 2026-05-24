@@ -23,5 +23,10 @@
         "name": "feat",
         "color": "22c55e",
         "description": "new feature"
+    },
+        {
+        "name": "fix",
+        "color": "ef4444",
+        "description": "bug fix"
     }
 ]
