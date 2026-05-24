@@ -18,6 +18,10 @@
         "name": "docs",
         "color": "3b82f6",
         "description": "documentation only"
+    },
+    {
+        "name": "feat",
+        "color": "22c55e",
+        "description": "new feature"
     }
-
 ]
