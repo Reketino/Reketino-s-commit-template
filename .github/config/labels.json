@@ -28,5 +28,10 @@
         "name": "fix",
         "color": "ef4444",
         "description": "bug fix"
+    },
+        {
+        "name": "perf",
+        "color": "f97316",
+        "description": "performance improvements"
     }
 ]
