@@ -33,5 +33,10 @@
     "name": "perf",
     "color": "f97316",
     "description": "performance improvements"
+  },
+   {
+    "name": "refactor",
+    "color": "a855f7",
+    "description": "code change that improves structure"
   }
 ]
