@@ -38,5 +38,10 @@
     "name": "refactor",
     "color": "a855f7",
     "description": "code change that improves structure"
+  },
+  {
+    "name": "style",
+    "color": "eab308",
+    "description": "formatting no logic change"
   }
 ]
