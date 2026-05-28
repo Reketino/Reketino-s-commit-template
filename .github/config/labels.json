@@ -43,5 +43,10 @@
     "name": "style",
     "color": "eab308",
     "description": "formatting no logic change"
+  },
+    {
+    "name": "test",
+    "color": "14b8a6",
+    "description": "adding or updating test"
   }
 ]
