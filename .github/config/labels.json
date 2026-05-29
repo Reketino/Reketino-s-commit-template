@@ -34,7 +34,7 @@
     "color": "f97316",
     "description": "performance improvements"
   },
-   {
+  {
     "name": "refactor",
     "color": "a855f7",
     "description": "code change that improves structure"
@@ -44,7 +44,7 @@
     "color": "eab308",
     "description": "formatting no logic change"
   },
-    {
+  {
     "name": "test",
     "color": "14b8a6",
     "description": "adding or updating test"
