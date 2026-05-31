@@ -17,6 +17,9 @@ jobs:
           script: |
             const fs = require("fs");
             
+            const labels = JSON.parse(
+              fs.readFileSync(".github/config/labels.json", "utf8")
+            );
             for (const label of labels) {
               try {
                 // Try update first
