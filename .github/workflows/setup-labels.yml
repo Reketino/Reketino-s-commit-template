@@ -32,14 +32,19 @@ jobs:
                 });
                 console.log(`Updated label: ${label.name}`);
               } catch (error) {
-                // If not exists -> create it
-                await github.rest.issues.createLabel({
-                  owner: context.repo.owner,
-                  repo: context.repo.repo,
-                  name: label.name,
-                  color: label.color,
-                  description: label.description
-                });
-                console.log(`Created label: ${label.name}`); 
+                  if (error.status === 404) {
+                    await github.rest.issues.createLabel({
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    name: label.name,
+                    color: label.color,
+                    description: label.description
+                  });
+
+                  console.log(`Created label: ${label.name}`); 
+                  } else {
+                   throw error;
+                }
               }
             }
+          
