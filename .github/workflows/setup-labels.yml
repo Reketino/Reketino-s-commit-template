@@ -18,6 +18,7 @@ jobs:
             const fs = require("fs");
 
             const owner = context.repo.owner;
+            const repo = context.repo.repo;
             
             const labels = JSON.parse(
               fs.readFileSync(".github/config/labels.json", "utf8")
