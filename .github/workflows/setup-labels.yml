@@ -28,7 +28,7 @@ jobs:
                 // Try update first
                 await github.rest.issues.updateLabel({
                   owner,
-                  repo: context.repo.repo,
+                  repo,
                   name: label.name,
                   color: label.color,
                   description: label.description
