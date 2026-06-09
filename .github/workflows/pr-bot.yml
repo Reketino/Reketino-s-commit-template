@@ -21,6 +21,10 @@ jobs:
 
             const owner = context.repo.owner;
             const repo = context.repo.repo;
+
+            const labels = JSON.parse(
+            fs.readFileSync(".github/config/labels.json", "utf8")
+            );
             
             const title = context.payload.pull_request.title;
 
