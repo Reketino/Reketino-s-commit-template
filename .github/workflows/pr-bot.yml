@@ -25,21 +25,10 @@ jobs:
             const labels = JSON.parse(
             fs.readFileSync(".github/config/labels.json", "utf8")
             );
+
+            const types = labels.map(label => label.name);
             
             const title = context.payload.pull_request.title;
-
-            const types = [
-              "build",
-              "chore",
-              "ci",
-              "docs",
-              "feat",
-              "fix",
-              "perf",
-              "refactor",
-              "style",
-              "test"
-            ];
 
             // Supports:
             // feat:
