@@ -73,9 +73,11 @@ jobs:
                 issue_number: context.issue.number,
                 labels: [type]
               });
+            
+            console.log(`Added label: ${type}`);
+            } else {
+             console.log(`Label already exists: ${type}`);
             }
-
-            console.log(`Label applied: ${type}`);
 
 
             
