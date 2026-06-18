@@ -40,7 +40,7 @@ jobs:
 
             if (!match || !types.includes(match[1])) {
               await github.rest.issues.createComment({
-                owner: owner,
+                owner,
                 repo: repo,
                 issue_number: context.issue.number,
                 body: [ 
