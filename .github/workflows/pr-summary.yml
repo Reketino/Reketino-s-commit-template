@@ -1,0 +1,12 @@
+name: PR Summary
+
+on:
+    pull_request:
+        types: [opened, synchronize]
+
+permissions: 
+    pull-requests: write
+
+jobs: 
+    update-pr:
+        runs-on: ubuntu-latest
