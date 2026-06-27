@@ -25,3 +25,7 @@ jobs:
                         repo,
                         pull_number
                     });
+
+                    const messages = commits.data.map(
+                        commit => commit.commit.message.split("\n")[0]
+                    )
