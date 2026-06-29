@@ -33,3 +33,5 @@ jobs:
                     if (message.length === 0) {
                         return;
                     }
+                    
+                    const title = messages[0];
