@@ -35,3 +35,9 @@ jobs:
                     }
                     
                     const title = messages[0];
+
+                    const body = [
+                        "## Commits Included",
+                        "",
+                        ...messages.map(msg => `- ${msg}`)
+                    ].joing("\n");
