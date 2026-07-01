@@ -41,3 +41,11 @@ jobs:
                         "",
                         ...messages.map(msg => `- ${msg}`)
                     ].joing("\n");
+
+                    await github.rest.pulls.update({
+                    owner,
+                    repo,
+                    pull_number,
+                    title,
+                    body,
+                    })
