@@ -49,3 +49,5 @@ jobs:
                         title,
                         body,
                     });
+
+                    console.log(`Updated PR #${pull_number}`);
