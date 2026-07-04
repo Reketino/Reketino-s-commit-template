@@ -20,7 +20,7 @@ jobs:
                     const repo = context.repo.repo;
                     const pull_number = context.payload.pull_request.number;
 
-                    const commits = await github.rest.pulls.list({
+                    const commits = await github.rest.pulls.listCommits({
                         owner,
                         repo,
                         pull_number
