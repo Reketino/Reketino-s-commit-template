@@ -30,7 +30,7 @@ jobs:
                         commit => commit.commit.message.split("\n")[0]
                     );
 
-                    if (message.length === 0) {
+                    if (messages.length === 0) {
                         return;
                     }
                     
