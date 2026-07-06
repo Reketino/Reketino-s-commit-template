@@ -40,7 +40,7 @@ jobs:
                         "## Commits Included",
                         "",
                         ...messages.map(msg => `- ${msg}`)
-                    ].joing("\n");
+                    ].join("\n");
 
                     await github.rest.pulls.update({
                         owner,
