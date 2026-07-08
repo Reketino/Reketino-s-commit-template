@@ -22,6 +22,10 @@ jobs:
                     const repo = context.repo.repo;
                     const pull_number = context.payload.pull_request.number;
 
+                    const labels = JSON.parse(
+                        fs.readFileSync(".github/config/labels.json", "utf8")
+                    );
+
                     const commits = await github.rest.pulls.listCommits({
                         owner,
                         repo,
