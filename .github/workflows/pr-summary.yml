@@ -26,6 +26,9 @@ jobs:
                         fs.readFileSync(".github/config/labels.json", "utf8")
                     );
                     const types = labels.map(label => label.name);
+                    const regex = new RegExp(
+                        `^(${types.join("|")})(\\([^)]+\\))?:`
+                    );
 
                     const commits = await github.rest.pulls.listCommits({
                         owner,
