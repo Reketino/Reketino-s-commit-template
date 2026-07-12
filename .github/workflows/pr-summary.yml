@@ -41,6 +41,7 @@ jobs:
                         .filter(message => regex.test(message));
 
                     if (messages.length === 0) {
+                        console.log("No valid commits found.")
                         return;
                     }
                     
