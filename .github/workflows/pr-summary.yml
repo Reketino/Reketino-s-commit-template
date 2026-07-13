@@ -50,7 +50,7 @@ jobs:
                     const body = [
                         "## Commits Included",
                         "",
-                        ...messages.map(msg => `- ${msg}`)
+                        ...messages.map(message => `- ${message}`)
                     ].join("\n");
 
                     await github.rest.pulls.update({
