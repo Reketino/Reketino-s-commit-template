@@ -39,7 +39,7 @@ jobs:
                         pull_number
                     });
 
-                    const messages = commits.data.map
+                    const messages = commits.data
                         .map(commit => commit.commit.message.split("\n")[0])
                         .filter(message => regex.test(message));
 
