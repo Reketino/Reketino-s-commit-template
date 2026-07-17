@@ -48,6 +48,17 @@ jobs:
                         return;
                     }
                     
+                    const priority = [
+                        "feat",
+                        "fix",
+                        "perf",
+                        "build",
+                        "ci",
+                        "docs",
+                        "style",
+                        "chore",
+                    ]
+                    
                     const title = messages[0];
 
                     const body = [
