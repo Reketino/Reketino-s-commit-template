@@ -60,6 +60,7 @@ jobs:
                     ];
 
                     messages.sort((a, b) => {
+                    const typeA = a.match(/^(\w+)/)?.[1] ?? "";
                     
                     });
                     
