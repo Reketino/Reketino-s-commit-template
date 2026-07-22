@@ -64,7 +64,7 @@ jobs:
                     const typeB = b.match(/^(\w+)/)?.[1] ?? "";
 
                     const indexA = priority.indexOf(typeA)
-                    const indeexB = priority.indexOf(typeB)
+                    const indexB = priority.indexOf(typeB)
                     
                     });
                     
