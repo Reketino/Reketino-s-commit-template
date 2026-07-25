@@ -2,7 +2,8 @@
   {
     "name": "build",
     "color": "8b5cf6",
-    "description": "build system or dependency changes"
+    "description": "build system or dependency changes",
+    "priority": 5
   },
   {
     "name": "chore",
