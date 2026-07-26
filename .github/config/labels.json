@@ -8,7 +8,8 @@
   {
     "name": "chore",
     "color": "6b7280",
-    "description": "tooling, deps, cleanup"
+    "description": "tooling, deps, cleanup",
+    "priority": 10
   },
   {
     "name": "ci",
