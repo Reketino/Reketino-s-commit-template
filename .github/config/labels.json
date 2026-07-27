@@ -14,7 +14,8 @@
   {
     "name": "ci",
     "color": "0ea5e9",
-    "description": "CI/CD changes"
+    "description": "CI/CD changes",
+    "priority":  6
   },
   {
     "name": "docs",
