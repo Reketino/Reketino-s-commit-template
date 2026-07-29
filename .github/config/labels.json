@@ -26,7 +26,8 @@
   {
     "name": "feat",
     "color": "22c55e",
-    "description": "new feature"
+    "description": "new feature",
+    "priority": 1
   },
   {
     "name": "fix",
