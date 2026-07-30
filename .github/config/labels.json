@@ -32,7 +32,8 @@
   {
     "name": "fix",
     "color": "ef4444",
-    "description": "bug fix"
+    "description": "bug fix",
+    "priority": 2
   },
   {
     "name": "perf",
