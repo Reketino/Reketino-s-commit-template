@@ -38,7 +38,8 @@
   {
     "name": "perf",
     "color": "f97316",
-    "description": "performance improvements"
+    "description": "performance improvements",
+    "priority": 3
   },
   {
     "name": "refactor",
