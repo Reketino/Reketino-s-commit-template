@@ -44,7 +44,8 @@
   {
     "name": "refactor",
     "color": "a855f7",
-    "description": "code change that improves structure"
+    "description": "code change that improves structure",
+    "priority": 4
   },
   {
     "name": "style",
