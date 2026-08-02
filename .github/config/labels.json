@@ -50,7 +50,8 @@
   {
     "name": "style",
     "color": "eab308",
-    "description": "formatting no logic change"
+    "description": "formatting no logic change",
+    "priority": 8
   },
   {
     "name": "test",
