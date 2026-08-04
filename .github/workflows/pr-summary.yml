@@ -48,18 +48,9 @@ jobs:
                         return;
                     }
                     
-                    const priority = [
-                        "feat",
-                        "fix",
-                        "perf",
-                        "refactor",
-                        "build",
-                        "ci",
-                        "docs",
-                        "style",
-                        "test",
-                        "chore",
-                    ];
+                    const priorities = Object.fromEntries(
+                    labels.map(label => [label.name, label.priority])
+                    )
 
                     messages.sort((a, b) => {
                         const typeA = a.match(/^(\w+)/)?.[1] ?? "";
