@@ -56,10 +56,7 @@ jobs:
                         const typeA = a.match(/^(\w+)/)?.[1] ?? "";
                         const typeB = b.match(/^(\w+)/)?.[1] ?? "";
 
-                        const indexA = priority.indexOf(typeA);
-                        const indexB = priority.indexOf(typeB);
-
-                        return indexA - indexB;
+                        return (priorities[typeA] ?? 999) - (priorities[typeB] ?? 999);
                     });
                     
                     const title = messages[0];
