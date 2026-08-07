@@ -49,7 +49,7 @@ jobs:
                     }
                     
                     const priorities = Object.fromEntries(
-                    labels.map(label => [label.name, label.priority])
+                        labels.map(label => [label.name, label.priority])
                     );
 
                     messages.sort((a, b) => {
