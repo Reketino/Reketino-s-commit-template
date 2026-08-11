@@ -11,13 +11,14 @@
     "color": "6b7280",
     "description": "tooling, deps, cleanup",
     "priority": 10,
-    "emoji": "🐛"
+    "emoji": "🧹"
   },
   {
     "name": "ci",
     "color": "0ea5e9",
     "description": "CI/CD changes",
-    "priority":  6
+    "priority":  6,
+    "emoji": "🤖"
   },
   {
     "name": "docs",
