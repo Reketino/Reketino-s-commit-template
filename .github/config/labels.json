@@ -24,7 +24,8 @@
     "name": "docs",
     "color": "3b82f6",
     "description": "documentation only",
-    "priority": 7
+    "priority": 7,
+    "emoji": "📚"
   },
   {
     "name": "feat",
