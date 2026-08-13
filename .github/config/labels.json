@@ -31,7 +31,8 @@
     "name": "feat",
     "color": "22c55e",
     "description": "new feature",
-    "priority": 1
+    "priority": 1,
+    "emoji": "✨"
   },
   {
     "name": "fix",
