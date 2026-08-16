@@ -45,7 +45,8 @@
     "name": "perf",
     "color": "f97316",
     "description": "performance improvements",
-    "priority": 3
+    "priority": 3,
+    "emoji": "⚡"
   },
   {
     "name": "refactor",
