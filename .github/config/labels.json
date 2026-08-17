@@ -59,7 +59,8 @@
     "name": "style",
     "color": "eab308",
     "description": "formatting no logic change",
-    "priority": 8
+    "priority": 8,
+    "emoji": "📦"
   },
   {
     "name": "test",
