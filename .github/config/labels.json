@@ -60,12 +60,13 @@
     "color": "eab308",
     "description": "formatting no logic change",
     "priority": 8,
-    "emoji": "📦"
+    "emoji": "🎨"
   },
   {
     "name": "test",
     "color": "14b8a6",
     "description": "adding or updating test",
-    "priority": 9
+    "priority": 9,
+    "emoji": "🧪"
   }
 ]
