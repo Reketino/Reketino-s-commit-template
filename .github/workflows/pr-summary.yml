@@ -52,6 +52,10 @@ jobs:
                         labels.map(label => [label.name, label.priority])
                     );
 
+                    const emojis = Object.fromEntries(
+                    labels.map(label => [label.name, label.emoji])
+                    );
+
                     messages.sort((a, b) => {
                         const typeA = a.match(/^(\w+)/)?.[1] ?? "";
                         const typeB = b.match(/^(\w+)/)?.[1] ?? "";
