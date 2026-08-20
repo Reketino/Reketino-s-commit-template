@@ -69,6 +69,7 @@ jobs:
                         "## Commits Included",
                         "",
                         ...messages.map(message => `- ${message}`)
+                            const type = message.match(/^(\w+)/)?.[1] ?? "";
                     ].join("\n");
 
                     await github.rest.pulls.update({
