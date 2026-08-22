@@ -68,11 +68,12 @@ jobs:
                     const body = [
                         "## Commits Included",
                         "",
-                        ...messages.map(message => `- ${message}`)
+                        ...messages.map(message => {
                             const type = message.match(/^(\w+)/)?.[1] ?? "";
                             const emoji = emojis[type] ?? "🔹";
 
-                            
+                            return `- ${emoji} ${message}`;
+                        })
                     ].join("\n");
 
                     await github.rest.pulls.update({
