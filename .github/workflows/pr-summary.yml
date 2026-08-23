@@ -66,7 +66,7 @@ jobs:
                     const title = messages[0];
 
                     const body = [
-                        "## Commits Included",
+                        "## 📋 Commits Included",
                         "",
                         ...messages.map(message => {
                             const type = message.match(/^(\w+)/)?.[1] ?? "";
