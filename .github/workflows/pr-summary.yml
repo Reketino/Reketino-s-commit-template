@@ -60,7 +60,10 @@ jobs:
                         const typeA = a.match(/^(\w+)/)?.[1] ?? "";
                         const typeB = b.match(/^(\w+)/)?.[1] ?? "";
 
-                        return (priorities[typeA] ?? 999) - (priorities[typeB] ?? 999);
+                        return (
+                            (priorities[typeA] ?? 999) - 
+                            (priorities[typeB] ?? 999) 
+                        );
                     });
                     
                     const title = messages[0];
