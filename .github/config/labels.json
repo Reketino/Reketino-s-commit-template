@@ -17,7 +17,7 @@
     "name": "ci",
     "color": "0ea5e9",
     "description": "CI/CD changes",
-    "priority":  6,
+    "priority": 6,
     "emoji": "🤖"
   },
   {
