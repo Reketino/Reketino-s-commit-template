@@ -53,7 +53,7 @@ jobs:
                     );
 
                     const emojis = Object.fromEntries(
-                    labels.map(label => [label.name, label.emoji])
+                        labels.map(label => [label.name, label.emoji])
                     );
 
                     messages.sort((a, b) => {
