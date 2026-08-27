@@ -79,6 +79,14 @@ jobs:
                         })
                     ].join("\n");
 
+                    const pullRequest = await github.rest.pulls.get({
+                        owner,
+                        repo,
+                        pull_number
+                    });
+
+                    
+
                     await github.rest.pulls.update({
                         owner,
                         repo,
