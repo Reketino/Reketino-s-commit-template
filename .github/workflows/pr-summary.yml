@@ -85,7 +85,7 @@ jobs:
                         pull_number
                     });
 
-                    
+                    const existingBody = pullRequest.data.body ?? "";
 
                     await github.rest.pulls.update({
                         owner,
