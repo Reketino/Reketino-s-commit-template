@@ -87,6 +87,8 @@ jobs:
 
                     const existingBody = pullRequest.data.body ?? "";
 
+                    const sectionRegex = /## 📋 Commits Included[\s\S]*?(?=\n---|\n## |$)/;
+
                     await github.rest.pulls.update({
                         owner,
                         repo,
