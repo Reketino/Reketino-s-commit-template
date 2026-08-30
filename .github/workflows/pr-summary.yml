@@ -89,6 +89,8 @@ jobs:
 
                     const sectionRegex = /## 📋 Commits Included[\s\S]*?(?=\n---|\n## |$)/;
 
+                    let body;
+
                     await github.rest.pulls.update({
                         owner,
                         repo,
