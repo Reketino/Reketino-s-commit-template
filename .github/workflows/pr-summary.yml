@@ -91,6 +91,13 @@ jobs:
 
                     let body;
 
+                    if (sectionRegex.test(existingBody)) {
+                     body = existingBody.replace(
+                        sectionRegex,
+                        commitSection
+                     );
+                    }
+
                     await github.rest.pulls.update({
                         owner,
                         repo,
