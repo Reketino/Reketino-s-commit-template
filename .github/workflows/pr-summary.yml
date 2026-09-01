@@ -95,7 +95,15 @@ jobs:
                      body = existingBody.replace(
                         sectionRegex,
                         commitSection
-                     );
+                      );
+                    } else {
+                      body = [
+                        commitSection,
+                        "",
+                        "---",
+                        "",
+                        existingBody
+                      ].join("\n");
                     }
 
                     await github.rest.pulls.update({
