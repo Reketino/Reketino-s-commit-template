@@ -68,7 +68,7 @@ jobs:
                     
                     const title = messages[0];
 
-                    const body = [
+                    const commitSection = [
                         "## 📋 Commits Included",
                         "",
                         ...messages.map(message => {
