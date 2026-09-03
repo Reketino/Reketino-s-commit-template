@@ -92,17 +92,17 @@ jobs:
                     let body;
 
                     if (sectionRegex.test(existingBody)) {
-                     body = existingBody.replace(
-                        sectionRegex,
-                        commitSection
+                        body = existingBody.replace(
+                            sectionRegex,
+                            commitSection
                       );
                     } else {
                       body = [
-                        commitSection,
-                        "",
-                        "---",
-                        "",
-                        existingBody
+                            commitSection,
+                            "",
+                            "---",
+                            "",
+                            existingBody
                       ].join("\n");
                     }
 
