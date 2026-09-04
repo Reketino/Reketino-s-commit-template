@@ -68,6 +68,8 @@ jobs:
                     
                     const title = messages[0];
 
+                    const primaryType = title.match(/^(\w+)/)?.[1] ?? "";
+
                     const commitSection = [
                         "## 📋 Commits Included",
                         "",
