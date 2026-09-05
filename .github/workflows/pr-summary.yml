@@ -70,6 +70,10 @@ jobs:
 
                     const primaryType = title.match(/^(\w+)/)?.[1] ?? "";
 
+                    const primaryLabel = labels.find(
+                        label => label.name === primaryType
+                    );
+
                     const commitSection = [
                         "## 📋 Commits Included",
                         "",
