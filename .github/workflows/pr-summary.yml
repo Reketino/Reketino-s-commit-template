@@ -120,4 +120,13 @@ jobs:
                         body,
                     });
 
+                    if (primaryLabel) {
+                        await github.rest.issues.setLabels({
+                            owner,
+                            repo,
+                            issue_number: pull_number,
+                            labels: [primaryLabel.name]
+                        });
+                    }
+
                     console.log(`Updated PR #${pull_number}`);
