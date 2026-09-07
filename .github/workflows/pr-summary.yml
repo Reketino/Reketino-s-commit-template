@@ -121,11 +121,10 @@ jobs:
                     });
 
                     if (primaryLabel) {
-                        await github.rest.issues.setLabels({
-                            owner,
-                            repo,
-                            issue_number: pull_number,
-                            labels: [primaryLabel.name]
+                        const exisitingLabels = pullRequest.data.labels.map(
+                            label => label.name
+                        );
+                        
                         });
                     }
 
