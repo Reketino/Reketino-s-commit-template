@@ -125,6 +125,10 @@ jobs:
                             label => label.name
                         );
                         
+                        const typeLabels = labels.map(
+                            label => label.name
+                        )
+
                         });
                     }
 
