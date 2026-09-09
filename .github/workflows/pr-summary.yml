@@ -127,7 +127,11 @@ jobs:
                         
                         const typeLabels = labels.map(
                             label => label.name
-                        )
+                        );
+
+                        const preservedLabels = existingLabels.filter(
+                            label => !typeLabels.includes(label)
+                        );
 
                         });
                     }
