@@ -121,7 +121,7 @@ jobs:
                     });
 
                     if (primaryLabel) {
-                        const exisitingLabels = pullRequest.data.labels.map(
+                        const existingLabels = pullRequest.data.labels.map(
                             label => label.name
                         );
                         
@@ -140,7 +140,7 @@ jobs:
                             labels: [
                                 ...preservedLabels,
                                 primaryLabel.name
-                                ]
+                            ]
                         });
                     }
 
