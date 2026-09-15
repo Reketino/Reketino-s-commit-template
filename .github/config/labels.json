@@ -68,5 +68,11 @@
     "description": "adding or updating test",
     "priority": 9,
     "emoji": "🧪"
+  },
+  {
+  "name": "size/xs",
+  "color": "22c55e",
+  "description": "extra small pull request",
+  "emoji": "🟢"
   }
 ]
