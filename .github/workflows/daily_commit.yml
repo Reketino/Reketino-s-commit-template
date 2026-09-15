@@ -1,10 +1,96 @@
 name: Daily Development Commit
 
 on:
-    schedule:
-        - cron: "0 20 * * *"
+  schedule:
+    - cron: "0 20 * * *"
 
-    workflow_dispatch:
+  workflow_dispatch:
+    inputs:
+      test_mode:
+        description: "Run immediately for testing"
+        required: true
+        default: false
+        type: boolean
 
 permissions:
-    contents: write
+  contents: write
+
+env:
+  START_DATE: "2026-09-17"
+  END_DATE: "2026-09-21"
+  COMMITS_PER_DAY: 3
+
+jobs:
+  daily-commit:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Check date
+        id: date
+        shell: bash
+        run: |
+          TODAY=$(TZ="Europe/Oslo" date +"%Y-%m-%d")
+          TEST_MODE="${{ inputs.test_mode }}"
+
+          echo "Today: $TODAY"
+          echo "Start date: $START_DATE"
+          echo "End date: $END_DATE"
+          echo "Commits per day: $COMMITS_PER_DAY"
+          echo "Test mode: $TEST_MODE"
+
+          if [[ "$TEST_MODE" == "true" ]]; then
+            echo "Test mode enabled."
+            echo "should_run=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          if [[ "$TODAY" < "$START_DATE" ]]; then
+            echo "The bot has not started yet."
+            echo "should_run=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          if [[ "$TODAY" > "$END_DATE" ]]; then
+            echo "The bot has finished."
+            echo "should_run=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          echo "The bot is active."
+          echo "should_run=true" >> "$GITHUB_OUTPUT"
+
+      - name: Create commits
+        if: steps.date.outputs.should_run == 'true'
+        shell: bash
+        run: |
+          mkdir -p .github/bot
+
+          TODAY=$(TZ="Europe/Oslo" date +"%Y-%m-%d")
+
+          git config user.name "Bear Even Lyngstad"
+          git config user.email "214024120+Reketino@users.noreply.github.com"
+
+          for ((i=1; i<=COMMITS_PER_DAY; i++)); do
+
+            echo "# Daily Development Activity" > .github/bot/daily-development.md
+            echo "" >> .github/bot/daily-development.md
+            echo "Date: $TODAY" >> .github/bot/daily-development.md
+            echo "Daily update: $i/$COMMITS_PER_DAY" >> .github/bot/daily-development.md
+
+            git add .github/bot/daily-development.md
+
+            git commit \
+              -m "chore: update development activity ($TODAY #$i)"
+
+          done
+
+      - name: Push to main
+        if: steps.date.outputs.should_run == 'true'
+        run: |
+          git push origin HEAD:main
+        
