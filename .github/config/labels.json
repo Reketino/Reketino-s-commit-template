@@ -74,5 +74,11 @@
   "color": "22c55e",
   "description": "extra small pull request",
   "emoji": "🟢"
+  },
+    {
+  "name": "size/s",
+  "color": "84cc16",
+  "description": "small pull request",
+  "emoji": "🟩"
   }
 ]
