@@ -73,12 +73,21 @@
   "name": "size/xs",
   "color": "22c55e",
   "description": "extra small pull request",
-  "emoji": "🟢"
+  "emoji": "🟢",
+  "max": 9
   },
-    {
+  {
   "name": "size/s",
   "color": "84cc16",
   "description": "small pull request",
-  "emoji": "🟩"
+  "emoji": "🟩",
+  "max": 49
+  },
+    {
+  "name": "size/m",
+  "color": "eab308",
+  "description": "medium pull request",
+  "emoji": "🟡",
+  "max": 199
   }
 ]
