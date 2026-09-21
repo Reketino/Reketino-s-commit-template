@@ -83,13 +83,12 @@
   "emoji": "🟩",
   "max": 49
   },
-    {
+  {
   "name": "size/l",
   "color": "f97316",
   "description": "large pull request",
   "emoji": "🟠",
   "max": 499
-  },
-
+  }
 
 ]
