@@ -89,6 +89,12 @@
   "description": "large pull request",
   "emoji": "🟠",
   "max": 499
+  },
+  {
+  "name": "size/xl",
+  "color": "ef4444",
+  "description": " extra large pull request",
+  "emoji": "🔴",
+  "max": null
   }
-
 ]
