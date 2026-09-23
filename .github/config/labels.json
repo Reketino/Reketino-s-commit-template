@@ -84,6 +84,13 @@
   "max": 49
   },
   {
+  "name": "size/m",
+  "color": "eab308",
+  "description": "medium pull request",
+  "emoji": "🟡",
+  "max": 199
+  },
+  {
   "name": "size/l",
   "color": "f97316",
   "description": "large pull request",
