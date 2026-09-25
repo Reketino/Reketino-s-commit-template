@@ -1,1 +1,8 @@
 name: PR Size
+
+on:
+    pull_request:
+        types: [opened, synchronize, reopened]
+
+permissions:
+    pull-request: write
