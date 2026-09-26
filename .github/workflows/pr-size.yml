@@ -6,3 +6,7 @@ on:
 
 permissions:
     pull-request: write
+
+jobs:
+    calculate-size:
+        runs-on: ubunutu-latest
