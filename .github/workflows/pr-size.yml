@@ -10,3 +10,7 @@ permissions:
 jobs:
     calculate-size:
         runs-on: ubunutu-latest
+
+        steps:
+            - name: Checkout repository
+            uses: actions/checkout@v4
