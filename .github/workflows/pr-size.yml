@@ -27,5 +27,19 @@ jobs:
 
                 const labels = JSON.parse(
                   fs.readFileSync(".github/config/labels.json", "utf8"")
-                )
+                );
+
+                const sizeLabels = labels
+                  .filter(label => label.name.startsWith("size/"))
+                  .sort((a, b) => {
+                    if (a.max === null) return 1;
+                    if (b.max === null) return -1;
+
+                    return a.max - b.max;
+                  });
+
+                const pullRequest = await github.rest.pulls.get({
+                  owner,
+                  repo,
+                })
                 
