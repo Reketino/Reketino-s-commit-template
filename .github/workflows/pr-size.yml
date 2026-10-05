@@ -41,5 +41,6 @@ jobs:
                 const pullRequest = await github.rest.pulls.get({
                   owner,
                   repo,
-                })
+                  pull_number
+                });
                 
