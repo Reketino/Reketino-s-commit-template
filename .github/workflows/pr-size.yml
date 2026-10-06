@@ -43,4 +43,6 @@ jobs:
                   repo,
                   pull_number
                 });
+
+                const additions = pullrequest.data.additions;
                 
