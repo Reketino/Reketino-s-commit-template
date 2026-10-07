@@ -44,5 +44,7 @@ jobs:
                   pull_number
                 });
 
-                const additions = pullrequest.data.additions;
+                const additions = pullRequest.data.additions;
+                const deletions = pullRequest.data.deletions;
+                
                 
