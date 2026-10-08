@@ -46,5 +46,6 @@ jobs:
 
                 const additions = pullRequest.data.additions;
                 const deletions = pullRequest.data.deletions;
+                const changedLines = additions + deletions;
                 
                 
