@@ -47,5 +47,13 @@ jobs:
                 const additions = pullRequest.data.additions;
                 const deletions = pullRequest.data.deletions;
                 const changedLines = additions + deletions;
+
+                const sizeLabel = sizeLabels.find(
+                 label =>
+                  label.max === null ||
+                  changedLines <= label.max
+                );
+
+                
                 
                 
