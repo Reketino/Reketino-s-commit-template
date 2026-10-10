@@ -54,6 +54,11 @@ jobs:
                   changedLines <= label.max
                 );
 
+                if (!sizeLabel) {
+                  core.setFailed("Could not determine PR size.");
+                  return;
+                }
+
                 
                 
                 
