@@ -59,6 +59,10 @@ jobs:
                   return;
                 }
 
+                const existingLabels = pullRequest.data.labels.map(
+                  label => label.name
+                );
+
                 
                 
                 
