@@ -63,6 +63,10 @@ jobs:
                   label => label.name
                 );
 
+                const preservedLabels = existingLabels.filter(
+                  label => !label.startsWith("size/")
+                );
+
                 
                 
                 
