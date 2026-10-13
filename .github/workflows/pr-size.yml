@@ -67,6 +67,16 @@ jobs:
                   label => !label.startsWith("size/")
                 );
 
+                await github.rest.issues.setLabels({
+                  owner,
+                  repo,
+                  issue_number: pull_number,
+                  labels: [
+                  ...preservedLabels
+                  sizeLabel.name
+                  ]
+                });
+
                 
                 
                 
