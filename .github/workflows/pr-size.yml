@@ -72,10 +72,14 @@ jobs:
                   repo,
                   issue_number: pull_number,
                   labels: [
-                  ...preservedLabels
+                  ...preservedLabels,
                   sizeLabel.name
                   ]
                 });
+
+                console.log(
+                  `Additions: +${additions}`
+                );
 
                 
                 
