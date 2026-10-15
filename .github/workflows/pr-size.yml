@@ -78,6 +78,10 @@ jobs:
                 });
 
                 console.log(
+                `PR size: ${changedLines} lines`
+                );
+
+                console.log(
                   `Additions: +${additions}`
                 );
 
