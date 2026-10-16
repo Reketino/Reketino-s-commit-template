@@ -85,6 +85,12 @@ jobs:
                   `Additions: +${additions}`
                 );
 
+                console.log(
+                  `Deletions: -${deletinos}`
+                );
+
+                
+
                 
                 
                 
