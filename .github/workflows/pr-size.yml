@@ -5,7 +5,7 @@ on:
         types: [opened, synchronize, reopened]
 
 permissions:
-    pull-request: write
+    pull-requests: write
 
 jobs:
     calculate-size:
@@ -26,7 +26,7 @@ jobs:
                   const pull_number = context.payload.pull_request.number;
 
                   const labels = JSON.parse(
-                    fs.readFileSync(".github/config/labels.json", "utf8"")
+                    fs.readFileSync(".github/config/labels.json", "utf8")
                   );
 
                   const sizeLabels = labels
@@ -44,46 +44,46 @@ jobs:
                     pull_number
                   });
 
-                const additions = pullRequest.data.additions;
-                const deletions = pullRequest.data.deletions;
-                const changedLines = additions + deletions;
+                  const additions = pullRequest.data.additions;
+                  const deletions = pullRequest.data.deletions;
+                  const changedLines = additions + deletions;
 
-                const sizeLabel = sizeLabels.find(
-                 label =>
-                  label.max === null ||
-                  changedLines <= label.max
-                );
+                  const sizeLabel = sizeLabels.find(
+                    label =>
+                    label.max === null ||
+                    changedLines <= label.max
+                  );
 
-                if (!sizeLabel) {
-                  core.setFailed("Could not determine PR size.");
-                  return;
-                }
+                  if (!sizeLabel) {
+                    core.setFailed("Could not determine PR size.");
+                    return;
+                  }
 
-                const existingLabels = pullRequest.data.labels.map(
-                  label => label.name
-                );
+                  const existingLabels = pullRequest.data.labels.map(
+                    label => label.name
+                  );
 
-                const preservedLabels = existingLabels.filter(
-                  label => !label.startsWith("size/")
-                );
+                  const preservedLabels = existingLabels.filter(
+                    label => !label.startsWith("size/")
+                  );
 
-                await github.rest.issues.setLabels({
-                  owner,
-                  repo,
-                  issue_number: pull_number,
-                  labels: [
-                  ...preservedLabels,
-                  sizeLabel.name
-                  ]
-                });
+                  await github.rest.issues.setLabels({
+                    owner,
+                    repo,
+                    issue_number: pull_number,
+                    labels: [
+                    ...preservedLabels,
+                    sizeLabel.name
+                    ]
+                  });
 
-                console.log(`PR size: ${changedLines} lines`);
+                  console.log(`PR size: ${changedLines} lines`);
 
-                console.log(`Additions: +${additions}`);
+                  console.log(`Additions: +${additions}`);
 
-                console.log(`Deletions: -${deletinos}`);
+                  console.log(`Deletions: -${deletions}`);
 
-                console.log(`Applied label: ${sizeLabel.emoji} ${sizeLabel.name}`);
+                  console.log(`Applied label: ${sizeLabel.emoji} ${sizeLabel.name}`);
 
                 
 
