@@ -89,6 +89,10 @@ jobs:
                   `Deletions: -${deletinos}`
                 );
 
+                console.log(
+                `Applied label: ${sizeLabel.emoji} ${sizeLabel.name}`
+                );
+
                 
 
                 
