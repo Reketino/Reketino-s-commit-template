@@ -78,11 +78,8 @@ jobs:
                   });
 
                   console.log(`PR size: ${changedLines} lines`);
-
                   console.log(`Additions: +${additions}`);
-
                   console.log(`Deletions: -${deletions}`);
-
                   console.log(`Applied label: ${sizeLabel.emoji} ${sizeLabel.name}`);
 
                 
