@@ -78,15 +78,14 @@ jobs:
                     }
                   }
 
-                  await github.rest.issues.setLabels({
-                    owner,
-                    repo,
-                    issue_number: pull_number,
-                    labels: [
-                    ...preservedLabels,
-                    sizeLabel.name
-                    ]
-                  });
+                  if (!existingLabels.includes(sizeLabel.name)) {
+                    await github.rest.issues.addLabels({
+                      owner,
+                      repo,
+                      issue_number: pull_number,
+                      labels: [sizeLabel.name]
+                    });
+                  }
 
                   console.log(`PR size: ${changedLines} lines`);
                   console.log(`Additions: +${additions}`);
