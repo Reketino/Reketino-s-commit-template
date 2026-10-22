@@ -149,4 +149,4 @@ Keep the configuration compatible with the workflows that read it.
 
 ---
 
-GitHub workflows made cleaner, more consistent, and easier to maintain.
+Built to make GitHub workflows cleaner, more consistent, and easier to maintain.
