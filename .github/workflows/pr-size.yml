@@ -69,7 +69,7 @@ jobs:
 
                   for (const label of existingSizeLabels) {
                     if (label !== sizeLabel.name) {
-                      await github.rest.isusses.removeLabel({
+                      await github.rest.issues.removeLabel({
                         owner,
                         repo,
                         issue_number: pull_number,
