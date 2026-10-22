@@ -64,9 +64,9 @@ jobs:
                   );
 
                   const existingSizeLabels = existingLabels.filter(
-                    label => !label.startsWith("size/")
+                    label => label.startsWith("size/")
                   );
-
+                  
                   for (const label of existingSizeLabels) {
                     if (label !== sizeLabel.name) {
                       await github.rest.issues.removeLabel({
