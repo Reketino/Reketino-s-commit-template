@@ -67,6 +67,17 @@ jobs:
                     label => !label.startsWith("size/")
                   );
 
+                  for (const label of existingSizeLabels) {
+                    if (label !== sizeLabel.name) {
+                      await github.rest.isusses.removeLabel({
+                        owner,
+                        repo,
+                        issue_number: pull_number,
+                        name: label
+                      });
+                    }
+                  }
+
                   await github.rest.issues.setLabels({
                     owner,
                     repo,
