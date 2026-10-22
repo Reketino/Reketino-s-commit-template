@@ -85,6 +85,36 @@ The workflow applies one size label and replaces the previous size label when th
 
 Size labels make it easier to identify small, manageable pull requests and larger changes that may need additional review.
 
+## Example Pull Request
+
+Here is an example of how a pull request might look after the workflows have run.
+
+**Pull request title:**
+
+```text
+feat(auth): add user authentication
+```
+
+**Labels:**
+
+`feat` · `size/m`
+
+**Generated PR summary:**
+
+### Commits Included
+
+- ✨ `feat(auth): add user authentication`
+- 🐛 `fix(auth): handle invalid credentials`
+- 📚 `docs: document authentication endpoints`
+
+---
+
+**PR size:** 125 changed lines
+
+The `PR Summary` workflow generates the title and commit summary, while `PR Size` applies the appropriate size label based on additions and deletions.
+
+*Example only. Actual titles, summaries, emojis, and labels depend on the commits and repository configuration.*
+
 ## Example Commits
 
 ```text
