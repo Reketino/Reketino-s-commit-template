@@ -30,6 +30,11 @@ jobs:
                     const labels = JSON.parse(
                         fs.readFileSync(".github/config/labels.json", "utf8")
                     );
+
+                    const typeLabels = labels.filter(
+                        label => !label.name.startsWith("size/")
+                    );
+                    
                     const types = labels.map(label => label.name);
                     const regex = new RegExp(
                         `^(${types.join("|")})(\\([^)]+\\))?: .+`
