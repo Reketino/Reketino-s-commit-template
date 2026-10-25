@@ -127,6 +127,12 @@ jobs:
                         body,
                     });
 
+                    const latestPR = await github.rest.pulls.get({
+                      owner,
+                      repo,
+                      pull_number
+                    });
+
                     if (primaryLabel) {
                         const existingLabels = pullRequest.data.labels.map(
                             label => label.name
