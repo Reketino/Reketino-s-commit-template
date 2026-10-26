@@ -133,6 +133,10 @@ jobs:
                       pull_number
                     });
 
+                    const existingLabels = latestPR.data.labels.map(
+                    label => label.name
+                    )
+
                     if (primaryLabel) {
                         const existingLabels = pullRequest.data.labels.map(
                             label => label.name
