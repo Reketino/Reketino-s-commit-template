@@ -135,29 +135,17 @@ jobs:
 
                     const existingLabels = latestPR.data.labels.map(
                     label => label.name
-                    )
+                    );
 
-                    if (primaryLabel) {
-                        const existingLabels = pullRequest.data.labels.map(
-                            label => label.name
-                        );
-                        
-                        const typeLabels = labels.map(
-                            label => label.name
-                        );
-
-                        const preservedLabels = existingLabels.filter(
-                            label => !typeLabels.includes(label)
-                        );
-
-                        await github.rest.issues.setLabels({
+                    if (
+                        primaryLabel &&
+                        !existingLabels.includes(primaryLabel.name)
+                    ) {
+                        await github.rest.issues.addLabels({
                             owner,
                             repo,
                             issue_number: pull_number,
-                            labels: [
-                                ...preservedLabels,
-                                primaryLabel.name
-                            ]
+                            labels: [primaryLabel.name]
                         });
                     }
 
