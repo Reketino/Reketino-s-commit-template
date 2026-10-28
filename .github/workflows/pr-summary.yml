@@ -149,4 +149,13 @@ jobs:
                         });
                     }
 
+                    for (const label of typeLabels) {
+                      if (
+                        label.name !== primaryLabel?.name &&
+                        existingLabels.includes(label.name)
+                      ) {
+                        
+                      }
+                    }
+
                     console.log(`Updated PR #${pull_number}`);
