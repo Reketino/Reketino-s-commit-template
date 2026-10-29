@@ -154,7 +154,12 @@ jobs:
                         label.name !== primaryLabel?.name &&
                         existingLabels.includes(label.name)
                       ) {
-                        
+                        await github.rest.issues.removeLabel({
+                          owner,
+                          repo,
+                          issue_number: pull_number,
+                          name: label.name
+                        });
                       }
                     }
 
