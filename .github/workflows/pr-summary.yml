@@ -163,4 +163,9 @@ jobs:
                       }
                     }
 
+                    const approvalMarker =
+                      "<!-- bears-commit-workflow-approval -->";
+                      
+                    
+
                     console.log(`Updated PR #${pull_number}`);
