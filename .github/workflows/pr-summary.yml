@@ -169,8 +169,12 @@ jobs:
                     const approvalComment = [
                       "## Bear Approves",
                       "",
-                      
-                    ]
+                      "All commit meassages passed validation, and the PR summary was generated successfully",
+                      "",
+                      "Automated by Bear's Commit Workflow.",
+                      "",
+                      approvalMarker
+                    ].join("\n")
                       
                     
 
