@@ -165,6 +165,12 @@ jobs:
 
                     const approvalMarker =
                       "<!-- bears-commit-workflow-approval -->";
+
+                    const approvalComment = [
+                      "## Bear Approves",
+                      "",
+                      
+                    ]
                       
                     
 
