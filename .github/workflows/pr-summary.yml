@@ -175,6 +175,10 @@ jobs:
                       "",
                       approvalMarker
                     ].join("\n")
+
+                    const comments = await.github.rest.issues.listComments({
+                      owner,
+                    })
                       
                     
 
