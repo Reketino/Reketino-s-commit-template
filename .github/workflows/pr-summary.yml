@@ -178,7 +178,10 @@ jobs:
 
                     const comments = await.github.rest.issues.listComments({
                       owner,
-                    })
+                      repo,
+                      issue_number: pull_number,
+                      per_page: 100
+                    });
                       
                     
 
