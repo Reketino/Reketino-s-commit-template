@@ -187,6 +187,10 @@ jobs:
                       comment.body?.includes(approvalMarker) &&
                       comment.user?.login === "github-actions[bot]"
                     );
+
+                    if (existingApproval) {
+                    
+                    }
                       
                     
 
