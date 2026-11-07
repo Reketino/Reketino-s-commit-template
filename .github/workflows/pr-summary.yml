@@ -190,10 +190,11 @@ jobs:
 
                     if (existingApproval) {
                       await github.rest.issues.updateComment({
-                      
-                      })
+                        owner,
+                        repo,
+                        issue_number: pull_number,
+                        body: approvalComment
+                      });
                     }
-                      
-                    
-
+            
                     console.log(`Updated PR #${pull_number}`);
