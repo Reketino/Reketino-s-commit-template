@@ -196,5 +196,6 @@ jobs:
                         body: approvalComment
                       });
                     }
-            
+
+                    console.log(`Bear Approves comment updated for PR #${pull_number}`);
                     console.log(`Updated PR #${pull_number}`);
