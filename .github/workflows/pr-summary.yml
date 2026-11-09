@@ -1,201 +1,213 @@
+
 name: PR Summary
 
 on:
-    pull_request:
-        types: [opened, synchronize]
+  pull_request:
+    types: [opened, synchronize]
 
-permissions: 
-    contents: read
-    pull-requests: write
-    issues: write
+permissions:
+  contents: read
+  pull-requests: write
+  issues: write
 
-jobs: 
-    update-pr:
-        runs-on: ubuntu-latest
+jobs:
+  update-pr:
+    runs-on: ubuntu-latest
 
-        steps:
-            - name: Checkout repository
-              uses: actions/checkout@v4 
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-            - name: Generate PR title and body
-              uses: actions/github-script@v7
-              with:
-                script: |
-                    const fs = require("fs");
-                    
-                    const owner = context.repo.owner;
-                    const repo = context.repo.repo;
-                    const pull_number = context.payload.pull_request.number;
+      - name: Generate PR title and body
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require("fs");
 
-                    const labels = JSON.parse(
-                        fs.readFileSync(".github/config/labels.json", "utf8")
-                    );
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+            const pull_number = context.payload.pull_request.number;
 
-                    const typeLabels = labels.filter(
-                        label => !label.name.startsWith("size/")
-                    );
-                    
-                    const types = labels.map(label => label.name);
-                    const regex = new RegExp(
-                        `^(${types.join("|")})(\\([^)]+\\))?: .+`
-                    );
+            const labels = JSON.parse(
+              fs.readFileSync(".github/config/labels.json", "utf8")
+            );
 
-                    const commits = await github.rest.pulls.listCommits({
-                        owner,
-                        repo,
-                        pull_number
-                    });
+            // Exclude size labels from commit types.
+            const typeLabels = labels.filter(
+              label => !label.name.startsWith("size/")
+            );
 
-                    const messages = commits.data
-                        .map(commit => commit.commit.message.split("\n")[0])
-                        .filter(message => regex.test(message));
+            const types = typeLabels.map(label => label.name);
 
-                    if (messages.length === 0) {
-                        console.log("No valid commits found.");
-                        return;
-                    }
-                    
-                    const priorities = Object.fromEntries(
-                        labels.map(label => [label.name, label.priority])
-                    );
+            const regex = new RegExp(
+              `^(${types.join("|")})(\\([^)]+\\))?: .+`
+            );
 
-                    const emojis = Object.fromEntries(
-                        labels.map(label => [label.name, label.emoji])
-                    );
+            const commits = await github.rest.pulls.listCommits({
+              owner,
+              repo,
+              pull_number
+            });
 
-                    messages.sort((a, b) => {
-                        const typeA = a.match(/^(\w+)/)?.[1] ?? "";
-                        const typeB = b.match(/^(\w+)/)?.[1] ?? "";
+            const messages = commits.data
+              .map(commit => commit.commit.message.split("\n")[0])
+              .filter(message => regex.test(message));
 
-                        return (
-                            (priorities[typeA] ?? 999) - 
-                            (priorities[typeB] ?? 999) 
-                        );
-                    });
-                    
-                    const title = messages[0];
+            if (messages.length === 0) {
+              core.setFailed("No valid commits found.");
+              return;
+            }
 
-                    const primaryType = title.match(/^(\w+)/)?.[1] ?? "";
+            const priorities = Object.fromEntries(
+              typeLabels.map(label => [label.name, label.priority])
+            );
 
-                    const primaryLabel = labels.find(
-                        label => label.name === primaryType
-                    );
+            const emojis = Object.fromEntries(
+              typeLabels.map(label => [label.name, label.emoji])
+            );
 
-                    const commitSection = [
-                        "## 📋 Commits Included",
-                        "",
-                        ...messages.map(message => {
-                            const type = message.match(/^(\w+)/)?.[1] ?? "";
-                            const emoji = emojis[type] ?? "🔹";
+            messages.sort((a, b) => {
+              const typeA = a.match(/^(\w+)/)?.[1] ?? "";
+              const typeB = b.match(/^(\w+)/)?.[1] ?? "";
 
-                            return `- ${emoji} ${message}`;
-                        })
-                    ].join("\n");
+              return (priorities[typeA] ?? 999) -
+                (priorities[typeB] ?? 999);
+            });
 
-                    const pullRequest = await github.rest.pulls.get({
-                        owner,
-                        repo,
-                        pull_number
-                    });
+            const title = messages[0];
+            const primaryType = title.match(/^(\w+)/)?.[1] ?? "";
 
-                    const existingBody = pullRequest.data.body ?? "";
+            const primaryLabel = typeLabels.find(
+              label => label.name === primaryType
+            );
 
-                    const sectionRegex = /## 📋 Commits Included[\s\S]*?(?=\n---|\n## |$)/;
+            const commitSection = [
+              "## 📋 Commits Included",
+              "",
+              ...messages.map(message => {
+                const type = message.match(/^(\w+)/)?.[1] ?? "";
+                const emoji = emojis[type] ?? "🔹";
 
-                    let body;
+                return `- ${emoji} ${message}`;
+              })
+            ].join("\n");
 
-                    if (sectionRegex.test(existingBody)) {
-                        body = existingBody.replace(
-                            sectionRegex,
-                            commitSection
-                      );
-                    } else {
-                      body = [
-                            commitSection,
-                            "",
-                            "---",
-                            "",
-                            existingBody
-                      ].join("\n");
-                    }
+            const pullRequest = await github.rest.pulls.get({
+              owner,
+              repo,
+              pull_number
+            });
 
-                    await github.rest.pulls.update({
-                        owner,
-                        repo,
-                        pull_number,
-                        title,
-                        body,
-                    });
+            const existingBody = pullRequest.data.body ?? "";
 
-                    const latestPR = await github.rest.pulls.get({
-                      owner,
-                      repo,
-                      pull_number
-                    });
+            const sectionRegex =
+              /## 📋 Commits Included[\s\S]*?(?=\n---|\n## |$)/;
 
-                    const existingLabels = latestPR.data.labels.map(
-                    label => label.name
-                    );
+            let body;
 
-                    if (
-                        primaryLabel &&
-                        !existingLabels.includes(primaryLabel.name)
-                    ) {
-                        await github.rest.issues.addLabels({
-                            owner,
-                            repo,
-                            issue_number: pull_number,
-                            labels: [primaryLabel.name]
-                        });
-                    }
+            if (sectionRegex.test(existingBody)) {
+              body = existingBody.replace(
+                sectionRegex,
+                commitSection
+              );
+            } else {
+              body = [
+                commitSection,
+                "",
+                "---",
+                "",
+                existingBody
+              ].join("\n");
+            }
 
-                    for (const label of typeLabels) {
-                      if (
-                        label.name !== primaryLabel?.name &&
-                        existingLabels.includes(label.name)
-                      ) {
-                        await github.rest.issues.removeLabel({
-                          owner,
-                          repo,
-                          issue_number: pull_number,
-                          name: label.name
-                        });
-                      }
-                    }
+            await github.rest.pulls.update({
+              owner,
+              repo,
+              pull_number,
+              title,
+              body
+            });
 
-                    const approvalMarker =
-                      "<!-- bears-commit-workflow-approval -->";
+            // Refresh labels before changing the type label.
+            const latestPR = await github.rest.pulls.get({
+              owner,
+              repo,
+              pull_number
+            });
 
-                    const approvalComment = [
-                      "## Bear Approves",
-                      "",
-                      "All commit meassages passed validation, and the PR summary was generated successfully",
-                      "",
-                      "Automated by Bear's Commit Workflow.",
-                      "",
-                      approvalMarker
-                    ].join("\n")
+            const existingLabels = latestPR.data.labels.map(
+              label => label.name
+            );
 
-                    const comments = await.github.rest.issues.listComments({
-                      owner,
-                      repo,
-                      issue_number: pull_number,
-                      per_page: 100
-                    });
+            if (
+              primaryLabel &&
+              !existingLabels.includes(primaryLabel.name)
+            ) {
+              await github.rest.issues.addLabels({
+                owner,
+                repo,
+                issue_number: pull_number,
+                labels: [primaryLabel.name]
+              });
+            }
 
-                    const existingApproval = comments.data.find(comment => 
-                      comment.body?.includes(approvalMarker) &&
-                      comment.user?.login === "github-actions[bot]"
-                    );
+            // Remove old commit type labels, but preserve size labels.
+            for (const label of typeLabels) {
+              if (
+                label.name !== primaryLabel?.name &&
+                existingLabels.includes(label.name)
+              ) {
+                await github.rest.issues.removeLabel({
+                  owner,
+                  repo,
+                  issue_number: pull_number,
+                  name: label.name
+                });
+              }
+            }
 
-                    if (existingApproval) {
-                      await github.rest.issues.updateComment({
-                        owner,
-                        repo,
-                        issue_number: pull_number,
-                        body: approvalComment
-                      });
-                    }
+            // Prepare Bear Approves comment.
+            const approvalMarker =
+              "<!-- bears-commit-workflow-approval -->";
 
-                    console.log(`Bear Approves comment updated for PR #${pull_number}`);
-                    console.log(`Updated PR #${pull_number}`);
+            const approvalComment = [
+              "## Bear Approves",
+              "",
+              "All commit messages passed validation, and the PR summary was generated successfully.",
+              "",
+              "Automated by Bear's Commit Workflow.",
+              "",
+              approvalMarker
+            ].join("\n");
+
+            // Find an existing Bear comment.
+            const comments = await github.rest.issues.listComments({
+              owner,
+              repo,
+              issue_number: pull_number,
+              per_page: 100
+            });
+
+            const existingApproval = comments.data.find(comment =>
+              comment.body?.includes(approvalMarker) &&
+              comment.user?.login === "github-actions[bot]"
+            );
+
+            if (existingApproval) {
+              await github.rest.issues.updateComment({
+                owner,
+                repo,
+                comment_id: existingApproval.id,
+                body: approvalComment
+              });
+            } else {
+              await github.rest.issues.createComment({
+                owner,
+                repo,
+                issue_number: pull_number,
+                body: approvalComment
+              });
+            }
+
+            console.log(`Bear Approves comment updated for PR #${pull_number}`);
+            console.log(`Updated PR #${pull_number}`);
