@@ -30,6 +30,10 @@ jobs:
               fs.readFileSync(".github/config/labels.json", "utf8")
             );
 
+            const typeLabels = labels.filter(
+            label => !label.name.startsWith("size/")
+            );
+
             const types = labels.map(label => label.name);
             
             const title = context.payload.pull_request.title;
