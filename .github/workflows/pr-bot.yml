@@ -43,6 +43,8 @@ jobs:
             // feat(auth):
             const match = title.match(/^(\w+)(\(.+\))?:/);
 
+            const isValid = match && types.includes(match[1]);
+
             if (!match || !types.includes(match[1])) {
               await github.rest.issues.createComment({
                 owner,
