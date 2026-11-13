@@ -45,6 +45,9 @@ jobs:
 
             const isValid = match && types.includes(match[1]);
 
+            const validationMarker =
+            "<!-- bears-commit-workflow-validation -->";
+
             if (!match || !types.includes(match[1])) {
               await github.rest.issues.createComment({
                 owner,
