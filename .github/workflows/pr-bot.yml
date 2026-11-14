@@ -39,8 +39,8 @@ jobs:
             const title = context.payload.pull_request.title;
 
             // Supports:
-            // feat:
-            // feat(auth):
+            // feat: add login
+            // feat(auth): add login
             const match = title.match(/^(\w+)(\(.+\))?:/);
 
             const isValid = match && types.includes(match[1]);
