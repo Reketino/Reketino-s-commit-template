@@ -48,6 +48,10 @@ jobs:
             const validationMarker =
             "<!-- bears-commit-workflow-validation -->";
 
+            const comments = await github.rest.issues.listComments({
+            
+            })
+
             if (!match || !types.includes(match[1])) {
               await github.rest.issues.createComment({
                 owner,
