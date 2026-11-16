@@ -49,8 +49,13 @@ jobs:
             "<!-- bears-commit-workflow-validation -->";
 
             const comments = await github.rest.issues.listComments({
+              owner,
+              repo,
+              issue_number: pull_number,
+              per_page: 100
+            });
+
             
-            })
 
             if (!match || !types.includes(match[1])) {
               await github.rest.issues.createComment({
