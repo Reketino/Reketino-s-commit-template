@@ -55,6 +55,12 @@ jobs:
               per_page: 100
             });
 
+            const existingValidationComment = comments.data.find(
+              comment =>
+                comment.body?.includes(validationMarker) &&
+                comment.user?.login === "github-actions[bot]" 
+            );
+
             
 
             if (!match || !types.includes(match[1])) {
