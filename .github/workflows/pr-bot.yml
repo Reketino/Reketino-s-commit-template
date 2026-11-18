@@ -61,6 +61,10 @@ jobs:
                 comment.user?.login === "github-actions[bot]" 
             );
 
+            if (!issValid) {
+            
+            }
+
             
 
             if (!match || !types.includes(match[1])) {
