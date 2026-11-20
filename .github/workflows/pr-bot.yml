@@ -65,6 +65,7 @@ jobs:
             const errorComment = [
             "## Invalid PR Title",
             "",
+            "Your pull request title does not follow the required format.",
             
             ]
             }
