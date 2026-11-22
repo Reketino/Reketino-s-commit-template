@@ -67,8 +67,9 @@ jobs:
                 "",
                 "Your pull request title does not follow the required format.",
                 "",
-                "**Use one of these formats:**"
-            
+                "**Use one of these formats:**",
+                "",
+                "```text",
             ]
             }
 
