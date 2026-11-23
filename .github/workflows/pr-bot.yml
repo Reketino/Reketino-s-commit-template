@@ -70,6 +70,7 @@ jobs:
                 "**Use one of these formats:**",
                 "",
                 "```text",
+                "feat: add login",
             ]
             }
 
