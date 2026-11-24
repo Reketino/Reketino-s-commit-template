@@ -71,6 +71,7 @@ jobs:
                 "",
                 "```text",
                 "feat: add login",
+                "fix: resolve crash",
             ]
             }
 
