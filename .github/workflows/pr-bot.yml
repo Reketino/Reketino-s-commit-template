@@ -73,6 +73,8 @@ jobs:
                 "feat: add login",
                 "fix: resolve crash",
                 "refactor(auth): simplify logic",
+                "```",
+                "",
             ]
             }
 
